@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import time
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
@@ -66,9 +67,10 @@ while True:
     # print(outputs[0].shape)
     # print(outputs[1].shape)
     # print(outputs[2].shape)
-
+    start = time.time()
     findObj(outputs,img)
-
+    end = time.time()
+    fps = 1 / (end - start)
     
     cv2.imshow('img',img)
     cv2.waitKey(1)
